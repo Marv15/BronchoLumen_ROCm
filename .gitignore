@@ -1,0 +1,5 @@
+.env
+runs/
+weights/
+datasets/coco8/
+.idea
