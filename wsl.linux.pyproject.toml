@@ -1,0 +1,38 @@
+# ---------------------------------------------------------------------------
+# TEMPLATE – Linux / WSL2 (PyTorch ROCm wheels from download.pytorch.org)
+#
+# This file is intentionally NOT named pyproject.toml, so `uv sync` will not
+# pick it up. Read the "Environment Setup" section in README.md, then:
+#
+#   cp wsl.linux.pyproject.toml pyproject.toml
+#   cp wsl.linux.env .env        # and set HSA_OVERRIDE_GFX_VERSION for your GPU
+#
+# These wheels ship kernels for several architectures; the GPU is selected at
+# runtime via the .env file, not in this file.
+# ---------------------------------------------------------------------------
+
+[project]
+name = "yolotest"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "torch",
+    "torchvision",
+    "ultralytics>=8.4.14",
+]
+
+[tool.uv]
+environments = [
+    "sys_platform == 'linux'",
+]
+
+[[tool.uv.index]]
+name = "pytorch-rocm"
+url = "https://download.pytorch.org/whl/rocm7.14"
+
+[tool.uv.sources]
+torch = { index = "pytorch-rocm" }
+torchvision = { index = "pytorch-rocm" }
+rocm = { index = "pytorch-rocm" }

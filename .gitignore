@@ -1,4 +1,8 @@
-.env
+# Active, user-specific config (copied from the *.pyproject.toml / *.env templates)
+/pyproject.toml
+/uv.lock
+/.env
+
 runs/
 weights/
 datasets/coco8/
